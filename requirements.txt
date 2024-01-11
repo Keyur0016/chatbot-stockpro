@@ -1,6 +1,7 @@
 streamlit
 streamlit_chat
 langchain
+langchain-openai
 sentence_transformers
 openai
 unstructured
