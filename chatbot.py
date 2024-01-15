@@ -16,7 +16,7 @@ st.title("Live StockPro Chatbot")
 chat_history = []
 
 # Setup openai api key
-openai_api_key = st.secrets['openai_ap-Key']
+openai_api_key = st.secrets['OPENAI_API']
 
 # Setup openai model
 openai_model = "gpt-4-vision-preview"
@@ -24,7 +24,7 @@ openai_model = "gpt-4-vision-preview"
 # Pinecone setup
 index_name = "langchain-chatbot"
 pinecone.init(
-    api_key= st.secrets['pinecone_api_key'],
+    api_key= st.secrets['PINECONE_API'],
     environment="gcp-starter"
 )
 index = pinecone.Index(index_name)
