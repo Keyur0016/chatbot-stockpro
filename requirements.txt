@@ -6,4 +6,4 @@ sentence_transformers
 openai
 unstructured
 unstructured[local-inference]
-pinecone-client
+pinecone-client===2.2.4
