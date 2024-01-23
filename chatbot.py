@@ -16,7 +16,7 @@ st.title("Live StockPro Chatbot")
 chat_history = []
 
 # Setup openai api key
-openai_api_key = st.secrets['OPENAI_API']
+openai_api_key = "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"
 
 # Setup openai model
 openai_model = "gpt-3.5-turbo-16k"
@@ -25,7 +25,7 @@ openai_model = "gpt-3.5-turbo-16k"
 index_name = "langchain-chatbot"
 
 pinecone.init(
-    api_key= st.secrets['PINECONE_API'],
+    api_key= "be71ab51-a1d4-453b-8498-cd67dd5911b7",
     environment="gcp-starter"
 )
 index = pinecone.Index(index_name)
@@ -60,7 +60,7 @@ def generate_response(question):
     prompt = PromptTemplate(template=template, input_variables=['question'])
 
     # Call OpenAI LLMChain
-    llm = OpenAI(openai_api_key=openai_api_key)
+    llm = OpenAI(openai_api_key=openai_api_key, temperature="0.8", max_tokens=3000)
     llm_chain = LLMChain(prompt=prompt, llm=llm)
 
     answer = llm_chain.run(question)
