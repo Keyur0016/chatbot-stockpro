@@ -6,14 +6,14 @@ from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain_community.vectorstores import Pinecone
 
 # Embedding model
-embeddings = OpenAIEmbeddings(openai_api_key="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")
+embeddings = OpenAIEmbeddings(openai_api_key="sk-4I....VW")
 
 # Index name
 index_name = "langchain-chatbot"
 
 # Pinecone index
 pinecone.init(
-    api_key="be71ab51-a1d4-453b-8498-cd67dd5911b7",
+    api_key=st.secrets['PINECONE_API'],
     environment="gcp-starter"
 )
 index = pinecone.Index(index_name)
@@ -21,9 +21,9 @@ index = pinecone.Index(index_name)
 # Get Website page
 
 pages_list = [
-    "https://stage.livestockpro.app/docs/1.0/dashboard",
-    "https://stage.livestockpro.app/docs/1.0/paddock",
-    "https://stage.livestockpro.app/docs/1.0/todolist"
+    "https://stage.livestockpro.app/docs/1.0/todolist", 
+    "https://stage.livestockpro.app/docs/1.0/planner", 
+    "https://stage.livestockpro.app/docs/1.0/farmai"
 ]
 
 for website_url in pages_list:

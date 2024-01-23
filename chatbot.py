@@ -19,10 +19,11 @@ chat_history = []
 openai_api_key = st.secrets['OPENAI_API']
 
 # Setup openai model
-openai_model = "gpt-4-vision-preview"
+openai_model = "gpt-3.5-turbo-16k"
 
 # Pinecone setup
 index_name = "langchain-chatbot"
+
 pinecone.init(
     api_key= st.secrets['PINECONE_API'],
     environment="gcp-starter"
@@ -68,7 +69,7 @@ def generate_response(question):
 
 def main():
     # Setup OpenAI model
-    model = ChatOpenAI(model=openai_model, temperature="0.8", openai_api_key=openai_api_key, max_tokens=400)
+    model = ChatOpenAI(model=openai_model, temperature="0.8", openai_api_key=openai_api_key, max_tokens=3000)
 
     # Setup Conversational buffer memory
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
@@ -102,7 +103,6 @@ def main():
             response = generate_response(query)
             st.session_state.message.append(({"role": "ai", "content": response}))
             st.chat_message('ai').write(response)
-
 
 if __name__ == '__main__':
     main()
